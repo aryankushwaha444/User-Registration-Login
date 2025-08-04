@@ -24,5 +24,4 @@ urlpatterns = [
     # Password management
     path('password-reset/', PasswordResetRequestView.as_view(), name='password_reset_request'),
     path('password-reset/confirm/', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path('change-password/', ChangePasswordView.as_view(), name='change_password'),
 ] 

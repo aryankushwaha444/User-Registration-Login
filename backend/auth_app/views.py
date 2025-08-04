@@ -221,26 +221,6 @@ class PasswordResetConfirmView(generics.GenericAPIView):
         }, status=status.HTTP_200_OK)
 
 
-class ChangePasswordView(generics.GenericAPIView):
-    """Change password endpoint"""
-    serializer_class = ChangePasswordSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-    def post(self, request):
-        serializer = self.get_serializer(data=request.data, context={'request': request})
-        serializer.is_valid(raise_exception=True)
-        
-        user = request.user
-        new_password = serializer.validated_data['new_password']
-        
-        user.set_password(new_password)
-        user.save()
-        
-        return Response({
-            'message': 'Password changed successfully'
-        }, status=status.HTTP_200_OK)
-
-
 @api_view(['POST'])
 @permission_classes([permissions.AllowAny])
 def verify_2fa_login(request):

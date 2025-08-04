@@ -131,20 +131,3 @@ class PasswordResetConfirmSerializer(serializers.Serializer):
             raise serializers.ValidationError('Invalid reset token')
         
         return attrs
-
-
-class ChangePasswordSerializer(serializers.Serializer):
-    current_password = serializers.CharField()
-    new_password = serializers.CharField(validators=[validate_password])
-    new_password_confirm = serializers.CharField()
-
-    def validate_current_password(self, value):
-        user = self.context['request'].user
-        if not user.check_password(value):
-            raise serializers.ValidationError('Current password is incorrect')
-        return value
-
-    def validate(self, attrs):
-        if attrs['new_password'] != attrs['new_password_confirm']:
-            raise serializers.ValidationError("Passwords don't match")
-        return attrs 
