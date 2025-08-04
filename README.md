@@ -1,1 +1,110 @@
-# User-Registration-Login
+# Full-Stack Authentication App
+
+A Modern full-stack application built with Django backend and React frontend, featuring comprehensive user authentication with Two-Factor Authentication (2FA).
+
+## Features
+
+- **User Registration & Login**: Secure user account creation and authentication
+- **Two-Factor Authentication (2FA)**: TOTP-based 2FA with QR code generation
+- **Session Management**: Secure session handling with JWT tokens
+- **Password Reset**: Email-based password reset functionality
+- **Responsive UI**: Modern, clean interface built with React and Tailwind CSS
+- **Back Navigation**: Intuitive navigation with back buttons
+
+## Tech Stack
+
+### Backend
+- Django 4.2+
+- Django REST Framework
+- Django CORS Headers
+- PyJWT for token management
+- PyOTP for 2FA implementation
+- qrcode for QR code generation
+
+### Frontend
+- React 18+
+- Tailwind CSS
+- React Router for navigation
+- Axios for API calls
+- React Hook Form for form handling
+
+
+### Backend Setup
+
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+
+2. Create a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Run migrations:
+   ```bash
+   python manage.py migrate
+   ```
+
+5. Create a superuser:
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+6. Start the development server:
+   ```bash
+   python manage.py runserver
+   ```
+
+### Frontend Setup
+
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+   ```bash
+   npm start
+   ```
+
+## API Endpoints
+
+### Authentication
+- `POST /api/auth/register/` - User registration
+- `POST /api/auth/login/` - User login
+- `POST /api/auth/logout/` - User logout
+- `POST /api/auth/refresh/` - Refresh JWT token
+
+### 2FA
+- `GET /api/auth/2fa/setup/` - Get 2FA setup QR code
+- `POST /api/auth/2fa/verify/` - Verify 2FA code
+- `POST /api/auth/2fa/disable/` - Disable 2FA
+
+
+## Environment Variables
+
+Create a `.env` file in the backend directory:
+
+```env
+SECRET_KEY=your-secret-key
+DEBUG=True
+ALLOWED_HOSTS=localhost,127.0.0.1
+CORS_ALLOWED_ORIGINS=http://localhost:3000
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER=your-email@gmail.com
+EMAIL_HOST_PASSWORD=your-app-password
+```
