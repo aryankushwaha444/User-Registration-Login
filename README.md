@@ -68,6 +68,16 @@ A Modern full-stack application built with Django backend and React frontend, fe
    python manage.py runserver
    ```
 
+7. Make sure migrations were created
+   ```bash
+   python manage.py makemigrations
+   ```
+
+8. Check your migration status
+   ```bash
+   python manage.py showmigrations
+   ```
+
 ### Frontend Setup
 
 1. Navigate to the frontend directory:
